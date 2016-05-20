@@ -149,9 +149,11 @@ public class AudioPlayer implements OnCompletionListener, OnPreparedListener, On
             break;
         case NONE:
             this.audioFile = file;
-            this.recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            this.recorder.setOutputFormat(MediaRecorder.OutputFormat.RAW_AMR); // THREE_GPP);
-            this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB); //AMR_NB);
+            this.recorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4); // THREE_GPP);
+            this.recorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+            this.recorder.setAudioSamplingRate(44100);
+            this.recorder.setAudioEncodingBitRate(96000);
+            this.recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);
             this.tempFile = generateTempFile();
             this.recorder.setOutputFile(this.tempFile);
             try {
